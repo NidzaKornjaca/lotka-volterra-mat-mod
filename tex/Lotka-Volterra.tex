@@ -125,18 +125,14 @@ Može se pokazati da $H(x,y)=Const.$ definiše jednostavnu zatvorenu krivu.
 \label{sub:std_primer}
 Da bi rešili ovaj sistem jednačina koristićemo Matlab funkciju ode45. Ova funkcija koristi Runge-Kuta
 formule četvrtog i petog stepena za automatsko integrisanje.\\ \\
- Naše jednačine su
+Naše jednačine su
 	\begin{center}
-		$x' = -ax + bxy$
+		$x' = ax - bxy$ \\
+		$y' = -yc + mxy$
 	\end{center}
+Kada ubacimo vrednosti parametara koje su $a=3, b=2, c=1, m=2.5$ i jednačine izjednačimo sa 0, dobijamo:
 	\begin{center}
-		$y' =yc - mxy$
-	\end{center}
-Kada ubacimo vrednosti parametara koje su a=3, b=2, c=1, m=2.5 i jednačine izjednačimo sa 0, dobijamo:
-	\begin{center}
-		$x'=3x - 2xy = 0$
-	\end{center}
-	\begin{center}
+		$x'=3x - 2xy = 0$ \\
 		$y'=-y + 2.5xy = 0$
 	\end{center}
 U Matlabu pravimo m fajl $ standard\_equations.m $:
@@ -159,26 +155,25 @@ U Matlabu pravimo m fajl $ standard\_equations.m $:
 
 \section{Logistička modifikacija Lotka-Voltera modela}
 \label{sec:log_mod}
-Ukoliko je prirodni priraštaj negativan, populacija će eksponencijalno opadati ka nuli,
-tj. težiće izumiranju. Ako je prirodni priraštaj pozitivan, populacija će da raste.
-Može se videti da je ovaj model realističan sve dok je prirodni priraštaj konstantan.\\
+Može se videti da je prethodni model realističan dokle god je koeficijent priraštaja zečeva konstantan.\\
 Znamo da na realnom, konačnom staništu populacija ne može neograničeno rasti zbog
 ograničenih raspoloživih resursa. Dakle, stanište može da podrži odredjen maksimalan broj
-jedinki neke vrste. Označimo taj maksimum sa U. Kada ovaj maksimalni broj živi duže vreme u
-nepromenjenom broju jasno je da je priraštaj u toj situaciji jednak nuli. Iskoristivši pretpostavku
+jedinki neke vrste. Označimo taj broj sa $U$. Iskoristivši pretpostavku
 da priraštaj linearno zavisi od veličine populacija, belgijski matemaričar Verhulst je predložio model:
 	\begin{center}
 		$\frac{dN(t)}{dt}=rN (t) (1 - \frac{N (t)}{U})$
 	\end{center}
-Mi smo iskoristili ovu jednačinu tako što smo zamenili u jednačini za plen deo
-formule za priraštaj plena logističkom formulom. Time smo uračunali zavisnost
-priraštaja od odnosa veličine populacije i kapaciteta staništa.\\
+Ako primenimo logističku formulu u računanju priraštaja populacije zečeva, uračunavamo i zavisnost
+od odnosa veličine populacije i kapaciteta staništa.\\
+Time se dobijaju jednačine:
+
+	\begin{center}
+		$x' = ax(1 - \frac{x}{U}) - bxy$\\
+		$y' = -my + cxy$
+	\end{center}
 
 \subsection{Primer u Matlabu}
 \label{sub:log_mod_matlab}
-
-Fazni dijagram za modifikaciju modela formiramo pomoću m fajla $ logistic\_equations.m $, kada
-trava ne može da ishrani više od U zečeva, gde nam je U parametar u logističkom modelu:
 
 \lstinputlisting{../logistic_equations.m}
 
@@ -199,6 +194,11 @@ trava ne može da ishrani više od U zečeva, gde nam je U parametar u logistič
 
 \subsection{Stanište sa vrlo ograničenim kapacitetom}
 \label{sub:log_mod_ogr}
+
+Koristimo isti model sa parametrima $a=3, b=2, c=1, m=2.5, U=2$
+i početnom konfiguracijom $x(0)=1, y(0)=1$.
+Sa grafikona vidimo da populacija plena ne raste dovoljno brzo da omogući
+održanje lisica na staništu.
 
 \begin{figure}[H]
     \centering
