@@ -55,11 +55,11 @@
 \maketitle
 \abstract{
 	Lotka-Voltera nelinearne diferencne jednačine prvog reda 
-	se koriste za modeliranje populacija sa predator-plen interakcijom.
-	Predstavljamo standardne jednačine i modifikaciju koja uzima u obzir
-	ograničen kapacitet staništa.
+	se koriste za modeliranje bioloških, hemijskih i ekonomskih sistema.
+	Kroz primer interakcije lisica i zečeva, predstavljamo standardne jednačine i
+	modifikaciju koja uzima u obzir ograničen kapacitet staništa.
 
-	Ključne reči: populacija, predator-plen
+	Ključne reči: Lotka-Voltera jendačine, modeliranje populacija, predator-plen
 }
 \tableofcontents
 
@@ -67,6 +67,16 @@
 
 \section{Uvod}
 \label{sec:uvod}
+
+Alfred J. Lotka je u svom radu "Doprinos teoriji periodičnih reakcija" objavljenom 1910. godine predstavio
+inicijalnu formulaciju Lotka-Voltera jednačina za modeliranje ponašanja određenih hemijskih reakcija, koju
+1920. koristi za modeliranje sistema u kom interaguju biljka i biljojed. Pet godina kasnije objavljuje knjgu
+gde pomoću ovih jednačina modelira populacije plena i grabljivice. Te jednačina objavljuje i Vito Voltera
+u radu gde analizira populacije riba u Jadranskom moru, nakon što je kroz razgovor sa svojim budućim zetom,
+morskim biologom Umbertom D'Ankonom, saznao da je nakon rata porastao procenat ulovljenih grabljivih riba.
+\\\\
+Ilustrovaćemo kroz primer lisica i zečeva primenu Lotka-Voltera jednačina na modeliranje
+populacija sa plen-grabljivica interakcijama.
 
 \section{Standardni Lotka-Voltera model}
 \label{sec:std_model}
@@ -86,7 +96,7 @@ Na sličan način dobijamo jednačinu za zečeve, s tim što u ovom slučaju pop
 		\begin{center}
 		$y' = (c - mx)y,  y(0)=y_0$
 		\end{center}
-Ove dve jednačine su poznate kao \textbf{Lotka-Voltera sistem diferencnih jednačina}. \\
+Ove jednačine su poznate kao \textbf{Lotka-Voltera sistem diferencnih jednačina}. \\
 
 Rešenje ovog sistema je teško naći i zbog toga se koriste numeričke metode. U broju populacije biće oscilacija.
 Ako je populacija zečeva mnogo velika onda će biti mnogo hrane za lisice i populacija će se povećati.
@@ -193,5 +203,12 @@ trava ne može da ishrani više od U zečeva, gde nam je U parametar u logistič
     \end{minipage}
 \end{figure}
 
+\section{Zaključak}
+\label{sec:zakljucak}
+
+Osnovni Lotka-Voltera model je dobar za modeliranje vrlo jednostavnih sistema,
+ali kod kompleksnijih sistema, sa više interakcija i kompleksnijim parametrima ne uspeva
+da realistišno predstavi situaciju. Sa druge strane, usled svoje elegancije i jednostavnosti,
+izuzetno ga je lako modifikovati ili inkorporirati u druge modele, što ga čini relevantnim i danas.
 
 \end{document}
