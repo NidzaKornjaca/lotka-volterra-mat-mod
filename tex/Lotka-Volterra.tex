@@ -54,7 +54,7 @@
 \date{27. ~maj 2018.}
 \maketitle
 \abstract{
-	Lotka-Voltera nelinearne diferencne jednačine prvog reda 
+	Lotka-Voltera nelinearne diferencne jednačine prvog reda
 	se koriste za modeliranje bioloških, hemijskih i ekonomskih sistema.
 	Kroz primer interakcije lisica i zečeva, predstavljamo standardne jednačine i
 	modifikaciju koja uzima u obzir ograničen kapacitet staništa.
@@ -80,41 +80,52 @@ populacija sa plen-grabljivica interakcijama.
 
 \section{Standardni Lotka-Voltera model}
 \label{sec:std_model}
-Pretpostavimo da populacija lisica jede samo zečeve i označimo
-tu populaciju sa x(t) u vremenu t.
-Ako nema zečeva populacija lisica će izumreti, na
-osnovu diferencne jednačine x'=-dx, gde je d razlika stope rodjenja i stope umiranja.
-Populacija zečeva y(t), bez lisica, će nastaviti da raste na osnovu diferencne jednačine y'=by, gde je b razlika stope rodjenja i stope umiranja.
-želimo slučaj kada su obe populacije pozitivne. Za slučaj lisica treba nam dodatna promenljiva
-sa desne strane koja će biti pozitivna kada ima zečeva. Tačnije, ta promenljiva treba da bude velika ako su
-x(t) ili y(t) veliki. Postoji mnogo načina da se to uradi, a mi ćemo tako što ćemo modifikovati d tako da bude
--d + ey. e je pozitivna konstanta jer su zečevi izvor hrane za lisice. Tada dobijamo da je jednačina za lisice:
+Stanište dele populacije lisica i zečeva. Lisice se hrane isključivo zečevima,
+dok za zečeve uvek ima hrane u izobilju. Populacija zečeva bi u nedostatku lisica
+neprestano rasla. Obratno, populacija lisica bi u slučaju nedostatka zečeva (hrane) ubrzo izumrla.
+Označimo broj zečeva sa x(t), a broj lisica sa y(t) za vreme t.
+Jednačine:
+	\begin{center}
+	$x' = ax$ \\
+	$y' = -my$
+	\end{center}
+gde su a i m parametri koji predstavljaju stope rasta i odumiranja odgovarajućih populacija,
+ilustruju njihovo ponašanje u nedostatku interakcije.
+Da bismo dobili realističniji model, neophodno je da inkorporiramo u jednačine
+činjenicu da lisice love zečeve. Broj njihovih susreta je direktno proporcionalan
+brojnosti lisica i zečeva, što možemo modelirati proizvodom xy. Lov izaziva opadanje
+populacije zečeva, dok omogućava porast. Neka su b i c koeficijenti smrtnosti zečeva tj.
+nataliteta lisica pri omogućenim interakcijama, i pretpostavimo da su lisice nezasite,
+tj. da će svaku priliku iskoristiti da pojedu zeca.
+Promene populacija možemo modelirati \textbf{Lotka-Voltera sistemom diferencnih jednačina}:
 		\begin{center}
-		$x' = (-a + by)x,   x(0)=x_0$
+		$x' = ax - bxy,   x(0)=x_0$\\
+		$y' = -my + cxy,  y(0)=y_0$
 		\end{center}
-Na sličan način dobijamo jednačinu za zečeve, s tim što u ovom slučaju populacija zečeva treba da se smanjuje pa ćemo ubaciti -cx. Dobijamo jednačinu: 
-		\begin{center}
-		$y' = (c - mx)y,  y(0)=y_0$
-		\end{center}
-Ove jednačine su poznate kao \textbf{Lotka-Voltera sistem diferencnih jednačina}. \\
 
-Rešenje ovog sistema je teško naći i zbog toga se koriste numeričke metode. U broju populacije biće oscilacija.
-Ako je populacija zečeva mnogo velika onda će biti mnogo hrane za lisice i populacija će se povećati.
-Kako se populacija lisica bude povećavala tako će se broj zečeva smanjivati. A kako se bude smanjivala
-količina hrane za lisice, tako će se i populacija lisica smanjivati. Očekivanja su da je savršeni balans populacija
-kada se nijedna populacija ne menja. To znači da su  x'=0 i y'=0. Ovo se zove  \textbf{ravnotežno stanje}.
-Postoji po jedno pozitivno ravnotežno stanje za obe jednačine, i to su $x=b/c$ iz jednačine za zečeve i $y=d/e$, iz jednačine za lisice.\\ 
+Analitičko rešenje ovog sistema je teško naći i zbog toga se koriste numeričke metode.
+Iz jednačina sledi da će porast populacije zečeva kao posledicu omogućiti porast populacije lisica,
+ali kako populacija lisica raste tako dolazi i do povećannja konzumacije zečeva, usled koje će eventualno
+početi da se smanjuje broj zečeva.
+Kako se bude smanjivala količina hrane za lisice, tako će i njihov broj morati da opadne.
+Postiže se \textbf{ravnotežno stanje} kada se brojnost ni jedne populacije ne menja (x'=0 i y'=0).
+Postoji po jedno pozitivno ravnotežno stanje za obe jednačine, i to su $x=m/c$ iz jednačine za zečeve i $y=a/b$, iz jednačine za lisice.\\
 Zaključujemo da  graf sa tačkama (x(t),y(t)) mora biti zatvorena kriva.
-Da bi ovo videli, razmotrimo funkciju H(x(t),y(t)), gde
-je H(x,y)=c $ln(x)$ - mx + a $ln(x)$ - by i x(t) i y(t) zadovoljavaju Lotka-Voltera jednačinu.
-Promena vremena se racuna pomoću pravila lanca i to: \\ \\ $H'=H_x x' + H_y y' = (b/x - c)(-d + ey)x + (d/y - e)(b - cx)y = 0$ \\ \\
-Tako da  H(x(t),y(t)) mora biti konstanta. Može se pokazati da H(x,y)= constant definiše jednostavnu zatvorenu krivu.
+Da bi ovo videli, razmotrimo funkciju:
+\begin{center}
+	$H(x,y)=c ln(y) - my + a ln(x) - bx$
+\end{center}
+Diferenciramo i dobijamo:
+\begin{center}
+	$H'=H_y y' + H_x x' = (b/y - c)(-d + mx)y + (d/x - m)(b - cy)x = 0$
+\end{center}
+Može se pokazati da $H(x,y)=Const.$ definiše jednostavnu zatvorenu krivu.
 
 \subsection{Primer u Matlabu}
 \label{sub:std_primer}
 Da bi rešili ovaj sistem jednačina koristićemo Matlab funkciju ode45. Ova funkcija koristi Runge-Kuta
 formule četvrtog i petog stepena za automatsko integrisanje.\\ \\
- Naše jednačine su 
+ Naše jednačine su
 	\begin{center}
 		$x' = -ax + bxy$
 	\end{center}
