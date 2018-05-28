@@ -7,6 +7,7 @@
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{mathtools}
 \usepackage[english,serbian]{babel}
 \usepackage[usenames,dvipsnames]{color}
 
@@ -54,7 +55,7 @@
 \date{27. ~maj 2018.}
 \maketitle
 \abstract{
-	Lotka-Voltera nelinearne diferencne jednačine prvog reda
+	Lotka-Voltera nelinearne diferencijalne jednačine prvog reda
 	se koriste za modeliranje bioloških, hemijskih i ekonomskih sistema.
 	Kroz primer interakcije lisica i zečeva, predstavljamo standardne jednačine i
 	modifikaciju koja uzima u obzir ograničen kapacitet staništa.
@@ -85,56 +86,131 @@ dok za zečeve uvek ima hrane u izobilju. Populacija zečeva bi u nedostatku lis
 neprestano rasla. Obratno, populacija lisica bi u slučaju nedostatka zečeva (hrane) ubrzo izumrla.
 Označimo broj zečeva sa x(t), a broj lisica sa y(t) za vreme t.
 Jednačine:
-	\begin{center}
-	$x' = ax$ \\
-	$y' = -my$
-	\end{center}
+    \begin{equation}
+        \begin{aligned}
+	    x' = ax \\
+        y' = -my
+        \end{aligned}
+	\end{equation}
 gde su a i m parametri koji predstavljaju stope rasta i odumiranja odgovarajućih populacija,
 ilustruju njihovo ponašanje u nedostatku interakcije.
 Da bismo dobili realističniji model, neophodno je da inkorporiramo u jednačine
 činjenicu da lisice love zečeve. Broj njihovih susreta je direktno proporcionalan
 brojnosti lisica i zečeva, što možemo modelirati proizvodom xy. Lov izaziva opadanje
-populacije zečeva, dok omogućava porast. Neka su b i c koeficijenti smrtnosti zečeva tj.
+populacije zečeva, dok omogućava porast populacije lisica.
+Neka su b i c koeficijenti smrtnosti zečeva tj.
 nataliteta lisica pri omogućenim interakcijama, i pretpostavimo da su lisice uvek gladne,
-tj. da će svaku priliku iskoristiti da pojedu zeca.
-Promene populacija možemo modelirati \textbf{Lotka-Voltera sistemom diferencnih jednačina}:
-		\begin{center}
-		$x' = ax - bxy,   x(0)=x_0$\\
-		$y' = -my + cxy,  y(0)=y_0$
-		\end{center}
+tj. da će svakom ukazanom prilikom pojesti zeca.
+Promene populacija možemo modelirati \textbf{Lotka-Voltera sistemom diferencijalnih jednačina}:
+        \begin{equation}
+        \label{eq:standard_lv}
+            \begin{aligned}
+                x' = ax - bxy,   x(0)=x_0\\
+                y' = -my + cxy,  y(0)=y_0
+            \end{aligned}
+		\end{equation}
 
-Analitičko rešenje ovog sistema je teško naći i zbog toga se koriste numeričke metode.
 Iz jednačina sledi da će porast populacije zečeva kao posledicu omogućiti porast populacije lisica,
-ali kako populacija lisica raste tako dolazi i do povećannja konzumacije zečeva, usled koje će eventualno
-početi da se smanjuje broj zečeva.
-Kako se bude smanjivala količina hrane za lisice, tako će i njihov broj morati da opadne.
-Postiže se \textbf{ravnotežno stanje} kada se brojnost ni jedne populacije ne menja (x'=0 i y'=0).
-Postoji po jedno pozitivno ravnotežno stanje za obe jednačine, i to su $x=m/c$ iz jednačine za zečeve i $y=a/b$, iz jednačine za lisice.\\
-Zaključujemo da  graf sa tačkama (x(t),y(t)) mora biti zatvorena kriva.
-Da bi ovo videli, razmotrimo funkciju:
-\begin{center}
-	$H(x,y)=c ln(y) - my + a ln(x) - bx$
-\end{center}
-Diferenciramo i dobijamo:
-\begin{center}
-	$H'=H_y y' + H_x x' = (b/y - c)(-d + mx)y + (d/x - m)(b - cy)x = 0$
-\end{center}
-Može se pokazati da $H(x,y)=Const.$ definiše jednostavnu zatvorenu krivu.
+ali kako populacija lisica raste, usled povećanog lova populacija zečeva će opadati.
+Dalje, kako se bude smanjivala količina hrane za lisice, tako će i njihov broj morati da opadne.
+
+\subsection{Stacionarna rešenja sistema}
+
+Stacionarno rešenje definišemo kao stanje u kom ne dolazi do promena vrednosti, tj.
+gde važi $x' = 0$ i $y' = 0$.
+Transformišući jednačine \eqref{eq:standard_lv} dobijamo
+    \begin{displaymath}
+        \begin{aligned}
+            x' = x (a - by) = 0\\
+            y' = y (cx - m) = 0
+        \end{aligned}
+    \end{displaymath}
+
+gde za netrivijalna rešenja važi
+    \begin{displaymath}
+        \begin{aligned}
+            a - by = 0\\
+            cx - m = 0
+        \end{aligned}
+    \end{displaymath}
+
+iz čega jednostavnim transformacijama dobijamo
+    \begin{equation}
+        \label{eq:stac_sol_std}
+        \begin{aligned}
+            x = \frac{m}{c} \equiv x_s\\
+            y = \frac{a}{b} \equiv y_s.
+        \end{aligned}
+    \end{equation}
+
+\subsection{Analitičko rešenja sistema}
+
+Sistem \eqref{eq:standard_lv} se može pomoću \eqref{eq:stac_sol_std}
+napisati u obliku
+\begin{displaymath}
+    \begin{aligned}
+        x' = ax(1 - \frac{by}{a}) = ax(1 - \frac{y}{y_s})\\
+        y' = -my(1 - \frac{cx}{m}) = -my(1 - \frac{x}{x_s}).
+    \end{aligned}
+\end{displaymath}
+
+Uvodimo smene $z(t) = \frac{x(t)}{x_s}$ i $l(t) = \frac{y(t)}{y_s}$
+
+\begin{displaymath}
+    \begin{aligned}
+        z' = al(1 - l)\\
+        l' = -mz(1 - z)
+    \end{aligned}
+\end{displaymath}
+
+iz čega se može dobiti
+\begin{displaymath}
+    \begin{aligned}
+        al(1 - l) \frac{dz}{dl} = -mz(1 - z).
+    \end{aligned}
+\end{displaymath}
+
+Ako podelimo ovu jednačinu sa $xz$, dobijamo
+\begin{displaymath}
+    \begin{aligned}
+        a(z - 1) \frac{dz}{dl} = -m(l - 1).
+    \end{aligned}
+\end{displaymath}
+
+Integralimo obe strane po $dl$
+\begin{displaymath}
+    \begin{aligned}
+        \int a(z - 1) \frac{dz}{dl} dl= \int -m(l - 1) dl
+    \end{aligned}
+\end{displaymath}
+
+i dobijamo jednačinu
+
+\begin{displaymath}
+    \begin{aligned}
+        a(\ln z -z) + C_1 = -m(\ln l - l) + C_2\\
+        a(\ln z -z) + m(\ln l - l) = C
+    \end{aligned}
+\end{displaymath}
 
 \subsection{Primer u Matlabu}
 \label{sub:std_primer}
 Da bi rešili ovaj sistem jednačina koristićemo Matlab funkciju ode45. Ova funkcija koristi Runge-Kuta
 formule četvrtog i petog stepena za automatsko integrisanje.\\ \\
 Naše jednačine su
-	\begin{center}
-		$x' = ax - bxy$ \\
-		$y' = -yc + mxy$
-	\end{center}
+    \begin{equation}
+        \begin{aligned}
+            x' = ax - bxy \\
+            y' = -yc + mxy
+        \end{aligned}
+	\end{equation}
 Kada ubacimo vrednosti parametara koje su $a=3, b=2, c=1, m=2.5$ i jednačine izjednačimo sa 0, dobijamo:
-	\begin{center}
-		$x'=3x - 2xy = 0$ \\
-		$y'=-y + 2.5xy = 0$
-	\end{center}
+    \begin{equation}
+        \begin{aligned}
+            x'=3x - 2xy = 0 \\
+            y'=-y + 2.5xy = 0
+        \end{aligned}
+	\end{equation}
 U Matlabu pravimo m fajl $ standard\_equations.m $:
 
 \lstinputlisting{../standard_equations.m}
@@ -160,17 +236,19 @@ Znamo da na realnom, konačnom staništu populacija ne može neograničeno rasti
 ograničenih raspoloživih resursa. Dakle, stanište može da podrži odredjen maksimalan broj
 jedinki neke vrste. Označimo taj broj sa $U$. Iskoristivši pretpostavku
 da priraštaj linearno zavisi od veličine populacija, belgijski matemaričar Verhulst je predložio model:
-	\begin{center}
-		$\frac{dN(t)}{dt}=rN (t) (1 - \frac{N (t)}{U})$
-	\end{center}
+	\begin{equation}
+		\frac{dN(t)}{dt}=rN (t) (1 - \frac{N (t)}{U})
+	\end{equation}
 Ako primenimo logističku formulu u računanju priraštaja populacije zečeva, uračunavamo i zavisnost
 od odnosa veličine populacije i kapaciteta staništa.\\
 Time se dobijaju jednačine:
 
-	\begin{center}
-		$x' = ax(1 - \frac{x}{U}) - bxy$\\
-		$y' = -my + cxy$
-	\end{center}
+    \begin{equation}
+        \begin{aligned}
+            x' = ax(1 - \frac{x}{U}) - bxy\\
+            y' = -my + cxy
+        \end{aligned}
+	\end{equation}
 
 \subsection{Primer u Matlabu}
 \label{sub:log_mod_matlab}
@@ -191,6 +269,7 @@ Time se dobijaju jednačine:
     \end{minipage}
 \end{figure}
 
+\subsection{Statičko rešenje za model sa logističkom modifikacijom}
 
 \subsection{Stanište sa vrlo ograničenim kapacitetom}
 \label{sub:log_mod_ogr}
