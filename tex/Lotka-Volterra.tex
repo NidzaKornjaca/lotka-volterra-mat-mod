@@ -180,6 +180,7 @@ od odnosa veličine populacije i kapaciteta staništa.\\
 Time se dobijaju jednačine:
 
     \begin{equation}
+        \label{eq:log_mod}
         \begin{aligned}
             x' = ax(1 - \frac{x}{U}) - bxy\\
             y' = -my + cxy
@@ -205,7 +206,27 @@ Time se dobijaju jednačine:
     \end{minipage}
 \end{figure}
 
-\subsection{Stacionarno rešenje za model sa logističkom modifikacijom}
+\subsection{Stacionarna rešenja za model sa logističkom modifikacijom}
+
+Izjednačavamo jednačine \eqref{eq:log_mod} sa 0
+\begin{displaymath}
+    \begin{aligned}
+        ax(1 - \frac{x}{U}) - bxy = 0\\
+        -my + cxy = 0.
+    \end{aligned}
+\end{displaymath}
+
+Dobijamo da su stacionarna rešenja
+\begin{displaymath}
+    \begin{aligned}
+        x = \frac{m}{c}\\
+        y = \frac{a}{b}(1 - \frac{x}{U}).
+    \end{aligned}
+\end{displaymath}
+
+Jasno je da se za fiksne $a$, $b$, $c$ i $m$,
+stacionarna tačka kreće samo po $y$ osi.
+
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.75\textwidth}
