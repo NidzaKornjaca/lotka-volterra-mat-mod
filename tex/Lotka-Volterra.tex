@@ -217,22 +217,24 @@ Izjednačavamo jednačine \eqref{eq:log_mod} sa 0
 \end{displaymath}
 
 Dobijamo da su stacionarna rešenja
-\begin{displaymath}
+\begin{equation}
+    \label{eq:log_stac}
     \begin{aligned}
         x = \frac{m}{c}\\
         y = \frac{a}{b}(1 - \frac{x}{U}).
     \end{aligned}
-\end{displaymath}
+\end{equation}
 
 Jasno je da se za fiksne $a$, $b$, $c$ i $m$,
-stacionarna tačka kreće samo po $y$ osi.
+stacionarna tačka kreće samo po $y$ osi u zavisnosti od $U$.
+Iz \eqref{eq:log_stac} sledi da populacija lisica ide ka istrebljenju ako je $U\leq\frac{m}{c}$.
 
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.75\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{images/predator_vs_u} % first figure itself
-        \caption{Promena stacionarnog rešenja predatorske jednačine}
+        \caption{Zavisnost y (predatorske populacije) stacionarnog rešenja od U}
     \end{minipage}
 \end{figure}
 
