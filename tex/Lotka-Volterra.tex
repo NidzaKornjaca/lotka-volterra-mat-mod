@@ -126,7 +126,8 @@ Transformišući jednačine \eqref{eq:standard_lv} dobijamo
         \end{aligned}
     \end{displaymath}
 
-gde za netrivijalna rešenja važi
+odakle se vidi da je jedno od rešenja $x = y = 0$,
+a drugo rešenje odgovara sistemu
     \begin{displaymath}
         \begin{aligned}
             a - by = 0\\
@@ -134,7 +135,7 @@ gde za netrivijalna rešenja važi
         \end{aligned}
     \end{displaymath}
 
-iz čega jednostavnim transformacijama dobijamo
+iz kog jednostavnim transformacijama dobijamo
     \begin{equation}
         \label{eq:stac_sol_std}
         \begin{aligned}
@@ -143,7 +144,7 @@ iz čega jednostavnim transformacijama dobijamo
         \end{aligned}
     \end{equation}
 
-\subsection{Analitičko rešenja sistema}
+\subsection{Trajektorija sistema}
 
 Sistem \eqref{eq:standard_lv} se može pomoću \eqref{eq:stac_sol_std}
 napisati u obliku
@@ -192,26 +193,13 @@ i dobijamo jednačinu
         a(\ln z -z) + m(\ln l - l) = C
     \end{aligned}
 \end{displaymath}
+čija rešenja predstavljaju putanje sistema za različite parametre
+$a$, $b$, $c$, $m$ i konstantu $C$.
+
 
 \subsection{Primer u Matlabu}
 \label{sub:std_primer}
-Da bi rešili ovaj sistem jednačina koristićemo Matlab funkciju ode45. Ova funkcija koristi Runge-Kuta
-formule četvrtog i petog stepena za automatsko integrisanje.\\ \\
-Naše jednačine su
-    \begin{equation}
-        \begin{aligned}
-            x' = ax - bxy \\
-            y' = -yc + mxy
-        \end{aligned}
-	\end{equation}
-Kada ubacimo vrednosti parametara koje su $a=3, b=2, c=1, m=2.5$ i jednačine izjednačimo sa 0, dobijamo:
-    \begin{equation}
-        \begin{aligned}
-            x'=3x - 2xy = 0 \\
-            y'=-y + 2.5xy = 0
-        \end{aligned}
-	\end{equation}
-U Matlabu pravimo m fajl $ standard\_equations.m $:
+Da bi rešili ovaj sistem jednačina koristićemo Matlab funkciju ode45.
 
 \lstinputlisting{../standard_equations.m}
 
@@ -269,7 +257,15 @@ Time se dobijaju jednačine:
     \end{minipage}
 \end{figure}
 
-\subsection{Statičko rešenje za model sa logističkom modifikacijom}
+\subsection{Stacionarno rešenje za model sa logističkom modifikacijom}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.75\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/predator_vs_u} % first figure itself
+        \caption{Promena stacionarnog rešenja predatorske jednačine}
+    \end{minipage}
+\end{figure}
 
 \subsection{Stanište sa vrlo ograničenim kapacitetom}
 \label{sub:log_mod_ogr}
