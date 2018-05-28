@@ -76,6 +76,7 @@ gde pomoću ovih jednačina modelira populacije plena i grabljivice. Te jednači
 u radu gde analizira populacije riba u Jadranskom moru, nakon što je kroz razgovor sa svojim budućim zetom,
 morskim biologom Umbertom D'Ankonom, saznao da je nakon rata porastao procenat ulovljenih grabljivih riba.
 \\\\
+
 Ilustrovaćemo kroz primer lisica i zečeva primenu Lotka-Voltera jednačina na modeliranje
 populacija sa plen-grabljivica interakcijama.
 
@@ -143,59 +144,6 @@ iz kog jednostavnim transformacijama dobijamo
             y = \frac{a}{b} \equiv y_s.
         \end{aligned}
     \end{equation}
-
-\subsection{Trajektorija sistema}
-
-Sistem \eqref{eq:standard_lv} se može pomoću \eqref{eq:stac_sol_std}
-napisati u obliku
-\begin{displaymath}
-    \begin{aligned}
-        x' = ax(1 - \frac{by}{a}) = ax(1 - \frac{y}{y_s})\\
-        y' = -my(1 - \frac{cx}{m}) = -my(1 - \frac{x}{x_s}).
-    \end{aligned}
-\end{displaymath}
-
-Uvodimo smene $z(t) = \frac{x(t)}{x_s}$ i $l(t) = \frac{y(t)}{y_s}$
-
-\begin{displaymath}
-    \begin{aligned}
-        z' = al(1 - l)\\
-        l' = -mz(1 - z)
-    \end{aligned}
-\end{displaymath}
-
-iz čega se može dobiti
-\begin{displaymath}
-    \begin{aligned}
-        al(1 - l) \frac{dz}{dl} = -mz(1 - z).
-    \end{aligned}
-\end{displaymath}
-
-Ako podelimo ovu jednačinu sa $xz$, dobijamo
-\begin{displaymath}
-    \begin{aligned}
-        a(z - 1) \frac{dz}{dl} = -m(l - 1).
-    \end{aligned}
-\end{displaymath}
-
-Integralimo obe strane po $dl$
-\begin{displaymath}
-    \begin{aligned}
-        \int a(z - 1) \frac{dz}{dl} dl= \int -m(l - 1) dl
-    \end{aligned}
-\end{displaymath}
-
-i dobijamo jednačinu
-
-\begin{displaymath}
-    \begin{aligned}
-        a(\ln z -z) + C_1 = -m(\ln l - l) + C_2\\
-        a(\ln z -z) + m(\ln l - l) = C
-    \end{aligned}
-\end{displaymath}
-čija rešenja predstavljaju putanje sistema za različite parametre
-$a$, $b$, $c$, $m$ i konstantu $C$.
-
 
 \subsection{Primer u Matlabu}
 \label{sub:std_primer}
