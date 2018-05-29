@@ -147,8 +147,16 @@ iz kog jednostavnim transformacijama dobijamo
 
 \subsection{Primer u Matlabu}
 \label{sub:std_primer}
-Da bi rešili ovaj sistem jednačina koristićemo Matlab funkciju ode45.
-
+Da bi rešili ovaj sistem jednačina koristićemo Matlab funkciju ode45, i pomoćne fajlove
+{\em params.m} i {\em plot\_figures.m}.
+\begin{figure}[H]
+\lstinputlisting{../params.m}
+\caption{{\em params.m} - Parametri modela}
+\end{figure}
+\begin{figure}[H]
+\lstinputlisting{../plot_figures.m}
+\caption{{\em plot\_figures.m} - Funkcija za crtanje grafika i faznog dijagrama}
+\end{figure}
 \lstinputlisting{../standard_equations.m}
 
 \begin{figure}[H]

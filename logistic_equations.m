@@ -11,4 +11,4 @@ lv_logistic = @ (t, state) [
     lv_logistic, [0, 15], [p_init;g_init] ...
 );
 
-plot_figures(ts, ys, lv_logistic);
+plot_figures(ts, ys);
