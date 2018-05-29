@@ -103,32 +103,40 @@ Neka su b i c koeficijenti smrtnosti zečeva tj.
 nataliteta lisica pri omogućenim interakcijama, i pretpostavimo da su lisice uvek gladne,
 tj. da će svakom ukazanom prilikom pojesti zeca.
 Promene populacija možemo modelirati \textbf{Lotka-Voltera sistemom diferencijalnih jednačina}:
-        \begin{equation}
-        \label{eq:standard_lv}
-            \begin{aligned}
-                x' = ax - bxy,   x(0)=x_0\\
-                y' = -my + cxy,  y(0)=y_0
-            \end{aligned}
-		\end{equation}
+    \begin{equation}
+    \label{eq:standard_lv}
+        \begin{aligned}
+            x' = ax - bxy,   x(0)=x_0\\
+            y' = -my + cxy,  y(0)=y_0
+        \end{aligned}
+    \end{equation}
 
-Iz jednačina sledi da će porast populacije zečeva kao posledicu omogućiti porast populacije lisica,
-ali kako populacija lisica raste, usled povećanog lova populacija zečeva će opadati.
-Dalje, kako se bude smanjivala količina hrane za lisice, tako će i njihov broj morati da opadne.
+koje drugačije možemo napisati kao
+
+    \begin{equation}
+        \label{eq:standard_lv_tf}
+        \begin{aligned}
+            x' = x (a - by) = 0\\
+            y' = y (cx - m) = 0.
+        \end{aligned}
+    \end{equation}
+
+Vidimo da priraštaj lisica neposredno zavisi od pristupa hrani, tj. zečevima.
+Kada je $cx - m > 0$ (podrazumeva se da su $x$ i $y$ pozitivni realni brojevi),
+tada raste populacija lisica, dok u suporotnom stagnira ili opada. Slično važi
+i za populaciju zečeva. Za pozitivne parametre $a$, $b$, $c$ i $m$, važi da će porast populacije
+zečeva omogućiti porast populacije lisica
+ali kako ona bude rasla, usled povećanog lova priraštaj zečeva (usled $a - by$) opada.
+Eventualno će postati negativan i biće ih sve manje, što će početi
+da obara priraštaj lisica, koji će takođe u nekom trenutku postati negativan.
+Ukoliko u padu ni jedna ni druga ne dođu do istrebljenja, ciklus će nastaviti da se odvija.
 
 \subsection{Stacionarna rešenja sistema}
 
 Stacionarno rešenje definišemo kao stanje u kom ne dolazi do promena vrednosti, tj.
 gde važi $x' = 0$ i $y' = 0$.
-Transformišući jednačine \eqref{eq:standard_lv} dobijamo
-    \begin{displaymath}
-        \begin{aligned}
-            x' = x (a - by) = 0\\
-            y' = y (cx - m) = 0
-        \end{aligned}
-    \end{displaymath}
-
-odakle se vidi da je jedno od rešenja $x = y = 0$,
-a drugo rešenje odgovara sistemu
+Iz \eqref{eq:standard_lv_tf} vidimo da je jedno od rešenja $x = y = 0$,
+a da drugo rešenje odgovara sistemu
     \begin{displaymath}
         \begin{aligned}
             a - by = 0\\
@@ -136,7 +144,7 @@ a drugo rešenje odgovara sistemu
         \end{aligned}
     \end{displaymath}
 
-iz kog jednostavnim transformacijama dobijamo
+odakle jednostavnim transformacijama dobijamo
     \begin{equation}
         \label{eq:stac_sol_std}
         \begin{aligned}
