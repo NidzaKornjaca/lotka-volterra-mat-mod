@@ -165,7 +165,9 @@ Da bi rešili ovaj sistem jednačina koristićemo Matlab funkciju ode45, i pomo�
 \lstinputlisting{../plot_figures.m}
 \caption{{\em plot\_figures.m} - Funkcija za crtanje grafika i faznog dijagrama}
 \end{figure}
+\begin{figure}[H]
 \lstinputlisting{../standard_equations.m}
+\end{figure}
 
 \begin{figure}[H]
     \centering
@@ -203,6 +205,8 @@ Time se dobijaju jednačine:
         \end{aligned}
 	\end{equation}
 
+\pagebreak
+
 \subsection{Primer u Matlabu}
 \label{sub:log_mod_matlab}
 
@@ -225,32 +229,61 @@ Time se dobijaju jednačine:
 \subsection{Stacionarna rešenja za model sa logističkom modifikacijom}
 
 Izjednačavamo jednačine \eqref{eq:log_mod} sa 0
-\begin{displaymath}
+\begin{equation}
+    \label{eq:log_eq}
     \begin{aligned}
         ax(1 - \frac{x}{U}) - bxy = 0\\
         -my + cxy = 0.
     \end{aligned}
+\end{equation}
+
+Jedno od rešenja je kao u standardnom modelu $x=0$ i $y=0$.
+Ako su $x\neq0$ i $y=0$, važi
+
+\begin{displaymath}
+    \begin{aligned}
+        ax(1 - \frac{x}{U}) = 0,
+    \end{aligned}
 \end{displaymath}
 
-Dobijamo da su stacionarna rešenja
+odakle sledi da je jedno od stacionarnih rešenja sistema
+
+\begin{displaymath}
+    \begin{aligned}
+        x=U\\
+        y=0.
+    \end{aligned}
+\end{displaymath}
+
+Za slučaj da su $x\neq0$ i $y\neq0$, iz \eqref{eq:log_eq} dobijamo jednačine
+\begin{displaymath}
+    \label{eq:log_stac}
+    \begin{aligned}
+        x = \frac{m}{c}\\
+        y = \frac{a}{b}(1 - \frac{x}{U}),
+    \end{aligned}
+\end{displaymath}
+
+iz koje kada zamenimo prvu jednačinu u drugu, dobijamo
+stacionarno rešenje
 \begin{equation}
     \label{eq:log_stac}
     \begin{aligned}
         x = \frac{m}{c}\\
-        y = \frac{a}{b}(1 - \frac{x}{U}).
+        y = \frac{a}{b}(1 - \frac{m}{cU})\equiv y_s.
     \end{aligned}
 \end{equation}
 
 Jasno je da se za fiksne $a$, $b$, $c$ i $m$,
 stacionarna tačka kreće samo po $y$ osi u zavisnosti od $U$.
-Iz \eqref{eq:log_stac} sledi da populacija lisica ide ka istrebljenju ako je $U\leq\frac{m}{c}$.
+Za $U<\frac{m}{c}$, lisice će težiti istrebljenju.
 
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.75\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{images/predator_vs_u} % first figure itself
-        \caption{Zavisnost y (predatorske populacije) stacionarnog rešenja od U}
+        \caption{Zavisnost $y$ (predatorske populacije) u stacionarnom rešenju od U}
     \end{minipage}
 \end{figure}
 
