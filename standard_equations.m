@@ -9,4 +9,4 @@ lv_standard = @(t, state) [
     lv_standard, [0, 10], [p_init;g_init] ...
 );
 
-plot_figures(ts, ys, lv_standard);
+plot_figures(ts, ys);

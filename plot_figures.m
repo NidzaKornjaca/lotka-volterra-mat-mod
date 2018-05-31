@@ -1,8 +1,8 @@
-function [] = plot_figures(ts, ys, equations)
+function [] = plot_figures(ts, ys)
     plot(ts, ys)
     legend('plen', 'predator')
     figure();
-    plot(ys(:,1),ys(:,2)); hold on               % plot solution in phase plane
+    plot(ys(:,1),ys(:,2));
+    hold on
     xlabel('plen'); ylabel('predator')
-    %vectfield(equations,0:.8:7.5,0:.8:10.5); 
     hold off
